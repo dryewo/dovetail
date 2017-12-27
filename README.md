@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dryewo/cyrus-logging.svg?branch=master)](https://travis-ci.org/dryewo/squeeze)
 [![codecov](https://codecov.io/gh/dryewo/cyrus-logging/branch/master/graph/badge.svg)](https://codecov.io/gh/dryewo/squeeze)
+[![Clojars Project](https://img.shields.io/clojars/v/cyrus/logging.svg)](https://clojars.org/cyrus/logging)
 
 Companion logging library for [Cyrus] Leiningen template.
 
