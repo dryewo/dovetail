@@ -61,7 +61,7 @@ cyrus-logging behavior:
 Encoding function can be replaced:
 
 ```clj
-(log/set-%s-encoder json/encode)
+(log/set-%s-encoder! json/encode)
 
 (info "%s" (take 5 (range)))
  INFO [nREPL-worker-42] c-l.c-test - [0,1,2,3,4]
