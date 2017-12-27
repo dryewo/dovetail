@@ -15,7 +15,7 @@ It brings the following dependencies:
 ## Usage
 
 ```edn
-[cyrus/logging "0.1.0"]
+[cyrus/logging "0.0.0"]
 ```
 
 All the examples bellow assume:
