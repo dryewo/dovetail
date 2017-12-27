@@ -1,4 +1,4 @@
-(defproject cyrus/logging "0.0.0"
+(defproject cyrus/logging "0.1.0"
   :description "Companion logging library for Cyrus Leiningen template."
   :url "https://github.com/dryewo/cyrus-logging"
   :license {:name "Eclipse Public License"
