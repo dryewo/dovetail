@@ -46,15 +46,15 @@ Default behavior:
 cyrus-logging behavior:
 
 ```clj
-(info "%s" (take 5 (range)))
+(log/info "%s" (take 5 (range)))
  INFO [nREPL-worker-42] c-l.c-test - (0 1 2 3 4)
-(info "%s" "123")
+(log/info "%s" "123")
  INFO [nREPL-worker-42] c-l.c-test - "123"
-(info "%s" 123)
+(log/info "%s" 123)
  INFO [nREPL-worker-42] c-l.c-test - 123
-(info "%s" "")
+(log/info "%s" "")
  INFO [nREPL-worker-42] c-l.c-test - ""
-(info "%s" nil)
+(log/info "%s" nil)
  INFO [nREPL-worker-42] c-l.c-test - nil
 ```
 
@@ -63,17 +63,17 @@ Encoding function can be replaced:
 ```clj
 (log/set-%s-encoder! json/encode)
 
-(info "%s" (take 5 (range)))
+(log/info "%s" (take 5 (range)))
  INFO [nREPL-worker-42] c-l.c-test - [0,1,2,3,4]
-(info "%s" "123")
+(log/info "%s" "123")
  INFO [nREPL-worker-42] c-l.c-test - "123"
-(info "%s" 123)
+(log/info "%s" 123)
  INFO [nREPL-worker-42] c-l.c-test - 123
-(info "%s" "")
+(log/info "%s" "")
  INFO [nREPL-worker-42] c-l.c-test - ""
-(info "%s" nil)
+(log/info "%s" nil)
  INFO [nREPL-worker-42] c-l.c-test - null
-(info "%s" {:foo "bar"})
+(log/info "%s" {:foo "bar"})
  INFO [nREPL-worker-42] c-l.c-test - {"foo":"bar"}
 ```
 
@@ -99,14 +99,14 @@ Sometimes we need `:info` logging level, but want to exclude some very chatty li
 
 
 ```clj
-(set-level! :info)
+(log/set-level! :info)
 (log/set-ns-log-levels!
   {"chatty.library.*" :warn})
 ```
 Or, we might want to enable our namespaces to output `:debug`, but leave others at `:info`:
 
 ```clj
-(set-level! :info)
+(log/set-level! :info)
 (log/set-ns-log-levels!
   {"our.app.*" :debug
    :all        :info})
@@ -116,7 +116,7 @@ In general, effective level is the higher of overall and per-namespace:
 
 ```clj
 ;; Equivalent to :info overall
-(set-level! :debug)
+(log/set-level! :debug)
 (log/set-ns-log-levels!
   {:all :info})
 ```
