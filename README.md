@@ -9,7 +9,6 @@ It brings the following dependencies:
 
 * [Timbre]
 * [slf4j-timbre]
-* [Cheshire]
 * [clojure.tools.logging]
 
 ## Usage
