@@ -8,7 +8,8 @@
                  [com.fzakaria/slf4j-timbre "0.3.8"]
                  [org.clojure/tools.logging "0.4.0"]]
   :plugins [[lein-cloverage "1.0.9"]
-            [lein-shell "0.5.0"]]
+            [lein-shell "0.5.0"]
+            [lein-ancient "0.6.15"]]
   :deploy-repositories [["releases" :clojars]]
   :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\[cyrus\\/logging \"[0-9.]*\"\\]/[cyrus\\\\/logging \"${:version}\"]/" "README.md"]}
   :release-tasks [["shell" "git" "diff" "--exit-code"]
