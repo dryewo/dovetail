@@ -97,3 +97,9 @@
   (testing "Invalid log levels are not accepted"
     (is (thrown? ExceptionInfo (set-log-level-from-env! "")))
     (is (thrown? ExceptionInfo (set-log-level-from-env! "foo")))))
+
+(deftest with-logging-context
+  (testing "Context passed timbre/with-context is logged"
+    (with-context "ctx"
+      (is (re-seq #" INFO \[[^\[\]]+\] ctx d.c-test - Hello\n"
+                  (with-out-str (info "Hello")))))))

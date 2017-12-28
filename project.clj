@@ -5,8 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [com.taoensso/timbre "4.10.0"]
-                 [com.fzakaria/slf4j-timbre "0.3.8"]
-                 [org.clojure/tools.logging "0.4.0"]]
+                 [com.fzakaria/slf4j-timbre "0.3.8"]]
   :plugins [[lein-cloverage "1.0.9"]
             [lein-shell "0.5.0"]
             [lein-ancient "0.6.15"]]

@@ -13,7 +13,6 @@ It brings the following dependencies:
 
 * [Timbre]
 * [slf4j-timbre]
-* [clojure.tools.logging]
 
 ## Usage
 
@@ -87,11 +86,23 @@ Default output function can be enabled as:
 
 * no timestamp
 * space-padded level
-* content of `:request` key of the context
+* context (if present)
 * current thread name
 * abbreviated namespace
 * formatted message
 * stacktrace of the throwable (if present) — on a new line
+
+```clj
+(log/with-context "[GET /api/hello]"
+  (log/warn (Exception. "Not ready") "The data is %s" [1, 2, 3]))
+ WARN [nREPL-worker-42] [GET /api/hello] d.c-test - The data is [1 2 3]
+          clojure.core/eval       core.clj: 3206
+                        ...                     
+              user/eval5574      REPL Input     
+                        ...                     
+dovetail.core-test/eval5578  core_test.clj:  109
+java.lang.Exception: Not ready
+```
 
 ### Filtering by namespace
 
@@ -190,5 +201,4 @@ your option) any later version.
 [Cyrus]: https://github.com/dryewo/cyrus
 [Timbre]: https://github.com/ptaoussanis/timbre
 [slf4j-timbre]: https://github.com/fzakaria/slf4j-timbre
-[clojure.tools.logging]: https://github.com/clojure/tools.logging
 [pretty]: https://github.com/AvisoNovate/pretty

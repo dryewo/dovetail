@@ -2,8 +2,7 @@
   (:require [taoensso.timbre :as timbre]
             [taoensso.encore :as enc]
             [io.aviso.exception :as aviso-ex]
-            [clojure.string :as str]
-            [clojure.tools.logging :as clojure-logging]))
+            [clojure.string :as str]))
 
 ;; Logging with encoding
 
@@ -24,9 +23,9 @@
   `(let [[throwable# message# & args#] (if (instance? Throwable ~throwable-or-message)
                                          [~throwable-or-message ~maybe-message ~@rest-args]
                                          [nil ~throwable-or-message ~@more])]
-     (when (clojure-logging/enabled? ~level)
+     (when (timbre/may-log? ~level)
        (let [msg# (apply format-log-message message# args#)]
-         (clojure-logging/log ~level throwable# msg#)))))
+         (timbre/log ~level throwable# msg#)))))
 
 (defmacro trace [& args]
   `(logf :trace ~@args))
@@ -42,6 +41,9 @@
 
 (defmacro error [& args]
   `(logf :error ~@args))
+
+(defmacro with-context [& args]
+  `(timbre/with-context ~@args))
 
 ;; Colorless logging
 
@@ -118,12 +120,12 @@
      (format "%5s [%s]%s %s - %s%s"
              (str/upper-case (name level))
              (.getName (Thread/currentThread))
-             (str (:request context))
+             (if context (str " " context) "")
              (abbrev-name ?ns-str)
              (if-let [fmt ?msg-fmt]
                (apply format fmt vargs)
                (apply str vargs))
-             (str (when ?err (str "\n" (timbre/stacktrace ?err))))))))
+             (if ?err (str "\n" (timbre/stacktrace ?err)) "")))))
 
 (defn set-output-fn! [output-fn]
   (timbre/merge-config! {:output-fn output-fn}))
