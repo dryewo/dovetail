@@ -119,6 +119,11 @@ In general, effective level is the higher of overall and per-namespace:
 (log/set-level! :debug)
 (log/set-ns-log-levels!
   {:all :info})
+
+;; Same
+(log/set-level! :info)
+(log/set-ns-log-levels!
+  {:all :debug})
 ```
 
 If a namespace matches several selectors, then the most specific one takes effect:
