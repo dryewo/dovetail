@@ -1,8 +1,8 @@
-# cyrus-logging
+# dovetail
 
-[![Build Status](https://travis-ci.org/dryewo/cyrus-logging.svg?branch=master)](https://travis-ci.org/dryewo/squeeze)
-[![codecov](https://codecov.io/gh/dryewo/cyrus-logging/branch/master/graph/badge.svg)](https://codecov.io/gh/dryewo/squeeze)
-[![Clojars Project](https://img.shields.io/clojars/v/cyrus/logging.svg)](https://clojars.org/cyrus/logging)
+[![Build Status](https://travis-ci.org/dryewo/dovetail.svg?branch=master)](https://travis-ci.org/dryewo/dovetail)
+[![codecov](https://codecov.io/gh/dryewo/dovetail/branch/master/graph/badge.svg)](https://codecov.io/gh/dryewo/dovetail)
+[![Clojars Project](https://img.shields.io/clojars/v/cyrus/dovetail.svg)](https://clojars.org/cyrus/dovetail)
 
 Companion logging library for [Cyrus] Leiningen template.
 
@@ -18,12 +18,12 @@ It brings the following dependencies:
 ## Usage
 
 ```edn
-[cyrus/logging "0.1.0"]
+[cyrus/dovetail "0.1.0"]
 ```
 
 All the examples bellow assume:
 ```clj
-(require '[cyrus-logging.core :as log])
+(require '[dovetail.core :as log])
 ```
 
 ### Encoding of %s as pr-str
@@ -142,11 +142,11 @@ All helper functions (not only `error`) support `Throwable` as first argument:
 ```
 (log/info (Exception. "HAHA") "Something bad happened")
  INFO [nREPL-worker-42] c-l.c-test - Something bad happened
-                clojure.core/eval       core.clj: 3206
-                              ...                     
-                   user/eval15501      REPL Input     
-                              ...                     
-cyrus-logging.core-test/eval15508  core_test.clj:   92
+           clojure.core/eval       core.clj: 3206
+                         ...                     
+              user/eval15501      REPL Input     
+                         ...                     
+dovetail.core-test/eval15508  core_test.clj:   92
 java.lang.Exception: HAHA
 ```
 
@@ -190,6 +190,5 @@ your option) any later version.
 [Cyrus]: https://github.com/dryewo/cyrus
 [Timbre]: https://github.com/ptaoussanis/timbre
 [slf4j-timbre]: https://github.com/fzakaria/slf4j-timbre
-[Cheshire]: https://github.com/dakrone/cheshire
 [clojure.tools.logging]: https://github.com/clojure/tools.logging
 [pretty]: https://github.com/AvisoNovate/pretty

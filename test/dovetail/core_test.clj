@@ -1,6 +1,6 @@
-(ns cyrus-logging.core-test
+(ns dovetail.core-test
   (:require [clojure.test :refer :all]
-            [cyrus-logging.core :refer :all]
+            [dovetail.core :refer :all]
             [clojure.string :as str]
             [taoensso.timbre :as timbre])
   (:import (clojure.lang ExceptionInfo)))
@@ -53,13 +53,13 @@
     (is (re-seq #"\"str\" \[1\] \{:a 1\}\n" (with-out-str (trace "%s %s %s" "str" [1] {:a 1})))))
   (testing "Can change formatting function"
     (set-%s-encoder! #(apply str (reverse (pr-str %))))
-    (is (re-seq #" INFO \[.+\] c-l.c-test - \"rts\" \]1\[ \}1 a:\{"
+    (is (re-seq #" INFO \[.+\] d.c-test - \"rts\" \]1\[ \}1 a:\{"
                 (with-out-str (info "%s %s %s" "str" [1] {:a 1}))))))
 
 (deftest shortening-namespaces
   (testing "Namespaces are shortened"
     (set-level! :info)
-    (is (re-seq #" INFO \[.+\] c-l.c-test - Hello\n"
+    (is (re-seq #" INFO \[.+\] d.c-test - Hello\n"
                 (with-out-str (info "Hello"))))))
 
 (deftest setting-level
@@ -72,11 +72,11 @@
 
 (deftest namespace-filtering
   (testing "Of overall level and per-namespace level the higher takes effect"
-    (set-ns-log-levels! {"cyrus-logging.*" :info})
+    (set-ns-log-levels! {"dovetail.*" :info})
     (set-level! :debug)
     (is (str/blank? (with-out-str (debug "Hello")))))
   (testing "Of overall level and per-namespace level the higher takes effect"
-    (set-ns-log-levels! {"cyrus-logging.*" :info})
+    (set-ns-log-levels! {"dovetail.*" :info})
     (set-level! :debug)
     (is (str/blank? (with-out-str (debug "Hello"))))))
 

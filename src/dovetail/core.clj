@@ -1,4 +1,4 @@
-(ns cyrus-logging.core
+(ns dovetail.core
   (:require [taoensso.timbre :as timbre]
             [taoensso.encore :as enc]
             [io.aviso.exception :as aviso-ex]
