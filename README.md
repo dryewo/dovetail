@@ -106,7 +106,7 @@ Sometimes we need `:info` logging level, but want to exclude some very chatty li
 Or, we might want to enable our namespaces to output `:debug`, but leave others at `:info`:
 
 ```clj
-(log/set-level! :info)
+(log/set-level! :debug)
 (log/set-ns-log-levels!
   {"our.app.*" :debug
    :all        :info})
