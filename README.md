@@ -32,30 +32,30 @@ Default behavior:
 
 ```clj
 (timbre/infof "%s" (take 5 (range)))
- INFO [nREPL-worker-42] c-l.c-test - clojure.lang.LazySeq@1b554e1
+ INFO [nREPL-worker-42] d.c-test - clojure.lang.LazySeq@1b554e1
 (timbre/infof "%s" "123")
- INFO [nREPL-worker-42] c-l.c-test - foo
+ INFO [nREPL-worker-42] d.c-test - foo
 (timbre/infof "%s" 123)
- INFO [nREPL-worker-42] c-l.c-test - 123
+ INFO [nREPL-worker-42] d.c-test - 123
 (timbre/infof "%s" "")
- INFO [nREPL-worker-42] c-l.c-test - 
+ INFO [nREPL-worker-42] d.c-test - 
 (timbre/infof "%s" nil)
- INFO [nREPL-worker-42] c-l.c-test - null
+ INFO [nREPL-worker-42] d.c-test - null
 ```
 
 cyrus-logging behavior:
 
 ```clj
 (log/info "%s" (take 5 (range)))
- INFO [nREPL-worker-42] c-l.c-test - (0 1 2 3 4)
+ INFO [nREPL-worker-42] d.c-test - (0 1 2 3 4)
 (log/info "%s" "123")
- INFO [nREPL-worker-42] c-l.c-test - "123"
+ INFO [nREPL-worker-42] d.c-test - "123"
 (log/info "%s" 123)
- INFO [nREPL-worker-42] c-l.c-test - 123
+ INFO [nREPL-worker-42] d.c-test - 123
 (log/info "%s" "")
- INFO [nREPL-worker-42] c-l.c-test - ""
+ INFO [nREPL-worker-42] d.c-test - ""
 (log/info "%s" nil)
- INFO [nREPL-worker-42] c-l.c-test - nil
+ INFO [nREPL-worker-42] d.c-test - nil
 ```
 
 Encoding function can be replaced:
@@ -64,17 +64,17 @@ Encoding function can be replaced:
 (log/set-%s-encoder! json/encode)
 
 (log/info "%s" (take 5 (range)))
- INFO [nREPL-worker-42] c-l.c-test - [0,1,2,3,4]
+ INFO [nREPL-worker-42] d.c-test - [0,1,2,3,4]
 (log/info "%s" "123")
- INFO [nREPL-worker-42] c-l.c-test - "123"
+ INFO [nREPL-worker-42] d.c-test - "123"
 (log/info "%s" 123)
- INFO [nREPL-worker-42] c-l.c-test - 123
+ INFO [nREPL-worker-42] d.c-test - 123
 (log/info "%s" "")
- INFO [nREPL-worker-42] c-l.c-test - ""
+ INFO [nREPL-worker-42] d.c-test - ""
 (log/info "%s" nil)
- INFO [nREPL-worker-42] c-l.c-test - null
+ INFO [nREPL-worker-42] d.c-test - null
 (log/info "%s" {:foo "bar"})
- INFO [nREPL-worker-42] c-l.c-test - {"foo":"bar"}
+ INFO [nREPL-worker-42] d.c-test - {"foo":"bar"}
 ```
 
 ### Default output function
@@ -141,7 +141,7 @@ All helper functions (not only `error`) support `Throwable` as first argument:
 
 ```
 (log/info (Exception. "HAHA") "Something bad happened")
- INFO [nREPL-worker-42] c-l.c-test - Something bad happened
+ INFO [nREPL-worker-42] d.c-test - Something bad happened
            clojure.core/eval       core.clj: 3206
                          ...                     
               user/eval15501      REPL Input     
