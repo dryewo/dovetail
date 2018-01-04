@@ -10,7 +10,7 @@
             [lein-shell "0.5.0"]
             [lein-ancient "0.6.15"]]
   :deploy-repositories [["releases" :clojars]]
-  :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\[cyrus\\/dovetail \"[0-9.]*\"\\]/[cyrus\\\\/dovetail \"${:version}\"]/" "README.md"]}
+  :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\\\[cyrus\\\\/dovetail \"[0-9.]*\"\\\\]/[cyrus\\\\/dovetail \"${:version}\"]/" "README.md"]}
   :release-tasks [["shell" "git" "diff" "--exit-code"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["change" "version" "leiningen.release/bump-version" "release"]

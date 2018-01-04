@@ -33,7 +33,7 @@ Default behavior:
 (timbre/infof "%s" (take 5 (range)))
  INFO [nREPL-worker-42] d.c-test - clojure.lang.LazySeq@1b554e1
 (timbre/infof "%s" "123")
- INFO [nREPL-worker-42] d.c-test - foo
+ INFO [nREPL-worker-42] d.c-test - 123
 (timbre/infof "%s" 123)
  INFO [nREPL-worker-42] d.c-test - 123
 (timbre/infof "%s" "")
