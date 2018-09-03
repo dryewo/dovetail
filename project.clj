@@ -1,4 +1,4 @@
-(defproject cyrus/dovetail "0.2.1"
+(defproject cyrus/dovetail "0.2.2"
   :description "Companion logging library for Cyrus Leiningen template."
   :url "https://github.com/dryewo/dovetail"
   :license {:name "Eclipse Public License"
