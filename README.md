@@ -17,7 +17,7 @@ It brings the following dependencies:
 ## Usage
 
 ```edn
-[cyrus/dovetail "0.2.2"]
+[cyrus/dovetail "0.3.0"]
 ```
 
 All the examples bellow assume:
