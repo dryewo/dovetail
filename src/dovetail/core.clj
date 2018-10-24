@@ -19,13 +19,19 @@
 
 (defmacro logf
   "Logs a message, formatted with clear distinction for dynamic values."
-  [level throwable-or-message & [maybe-message & rest-args :as more]]
-  `(let [[throwable# message# & args#] (if (instance? Throwable ~throwable-or-message)
-                                         [~throwable-or-message ~maybe-message ~@rest-args]
-                                         [nil ~throwable-or-message ~@more])]
-     (when (timbre/may-log? ~level)
-       (let [msg# (apply format-log-message message# args#)]
-         (timbre/log ~level throwable# msg#)))))
+  ([level only-arg]
+   `(timbre/log ~level ~only-arg))
+  ([level throwable message]
+   `(if (instance? Throwable ~throwable)
+      (timbre/log ~level ~throwable ~message)
+      (logf ~level ~throwable ~message nil)))
+  ([level throwable-or-message maybe-message & rest-args]
+   `(let [[throwable# message# & args#] (if (instance? Throwable ~throwable-or-message)
+                                          [~throwable-or-message ~maybe-message ~@rest-args]
+                                          [nil ~throwable-or-message ~maybe-message ~@rest-args])]
+      (when (timbre/may-log? ~level)
+        (let [msg# (apply format-log-message message# args#)]
+          (timbre/log ~level throwable# msg#))))))
 
 (defmacro trace [& args]
   `(logf :trace ~@args))

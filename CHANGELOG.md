@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+### Added
+- When logging functions are called with only 1 string argument, behave like print instead of printf.
 
 ## [0.2.2] — 2018-09-03
 

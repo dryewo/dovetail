@@ -40,6 +40,8 @@ Default behavior:
  INFO [nREPL-worker-42] d.c-test - 
 (timbre/infof "%s" nil)
  INFO [nREPL-worker-42] d.c-test - null
+(timbre/infof "%5D")
+ CompilerException java.util.UnknownFormatConversionException: Conversion = 'D', compiling: ...
 ```
 
 cyrus-logging behavior:
@@ -55,7 +57,20 @@ cyrus-logging behavior:
  INFO [nREPL-worker-42] d.c-test - ""
 (log/info "%s" nil)
  INFO [nREPL-worker-42] d.c-test - nil
+(log/info "%5D")
+ INFO [nREPL-worker-42] d.c-test - %5D
 ```
+
+In the last example the string is not processed with formatting, because there are no further arguments.
+This also works when first argument is a Throwable:
+
+```clj
+(log/info (Exception. "error") "%5D")
+ INFO [nREPL-worker-42] d.c-test - %5D
+             clojure.core/eval       core.clj: 3206
+...
+```
+See [Throwable as first argument](#throwable-as-first-argument) for more details.
 
 Encoding function can be replaced:
 

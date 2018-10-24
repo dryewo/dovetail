@@ -103,3 +103,9 @@
     (with-context "ctx"
       (is (re-seq #" INFO \[[^\[\]]+\] ctx d.c-test - Hello\n"
                   (with-out-str (info "Hello")))))))
+
+(deftest logging-one-arg
+  (testing "Calling with one argument skips processing %, does not throw, more like print instead of printf"
+    (info "%5D")
+    (info (Exception. "hi"))
+    (info (Exception. "hi") "%5D")))
