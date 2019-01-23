@@ -2,14 +2,14 @@
   :description "Companion logging library for Cyrus Leiningen template."
   :url "https://github.com/dryewo/dovetail"
   :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [com.taoensso/timbre "4.10.0"]
+            :url  "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[com.taoensso/timbre "4.10.0"]
                  [com.fzakaria/slf4j-timbre "0.3.12"]]
   :plugins [[lein-cloverage "1.0.13"]
             [lein-shell "0.5.0"]
             [lein-ancient "0.6.15"]
             [lein-changelog "0.3.2"]]
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.0"]]}}
   :deploy-repositories [["releases" :clojars]]
   :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\\\[cyrus\\\\/dovetail \"[0-9.]*\"\\\\]/[cyrus\\\\/dovetail \"${:version}\"]/" "README.md"]}
   :release-tasks [["shell" "git" "diff" "--exit-code"]
